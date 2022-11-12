@@ -1,0 +1,168 @@
+@keyframes background-pan{
+    from{
+        background-position: 0% center;
+    }
+
+    to{
+        background-position: 200% center;
+    }
+}
+
+body,main {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    background-color: black;
+}
+
+main {
+    background-image: url(../assets/henry-co-tqu0IOMaiU8-unsplash.jpg);
+    background-size: cover;
+    background-position: center 0%;
+    position: relative;
+    z-index: 2;
+    transition: transform 500ms cubic-bezier(.13,.53,.38,.97);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-toggle {
+    height: 5rem;
+    width: 5rem;
+    background-color: #c1d9de;
+    border-radius: 5rem;
+    position: fixed;
+    z-index: 3;
+    bottom: 5rem;
+    left: 50%;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0rem 0rem 4rem rgba(0 0 0 / 10%) ;
+    transform: translateX(-50%);
+    transition: transform, background-color;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+}
+
+#nav-toggle:hover {
+    transform: translateX(-50%) scale(1.14);
+}
+
+#nav-toggle:active {
+    transform: translateX(-50%) scale(0.96);
+}
+
+#nav-toggle > i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    font-size: 1.75rem;    
+    opacity: 0%;
+    transition: transform, opacity;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+}
+
+body:not([data-nav="true"]) > #nav-toggle:hover > .open {
+    opacity: 100%;
+    transform: translate(50% 50%) scale(1);
+}
+
+body[data-nav="true"] > #nav-toggle > .close {
+    opacity: 100%;
+    transform: translate(50% 50%) scale(1);
+}
+
+body[data-nav="true"] > main {
+    transform: translateY(-50%);
+}
+
+body[data-nav="true"] > #nav-toggle{
+    transform: translateY(50%) translateX(-50%);
+}
+
+.nav{
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#nav-links > .nav-link > .nav-link-label{
+    font-size: 1.25rem;
+    color: white;
+    margin: 0px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+#nav-links > .nav-link{
+    text-decoration: none;
+    width: 20%;
+}
+
+#nav-links > .nav-link > .nav-link-img{
+    width: 100%;
+    aspect-ratio: 1.8 / 1;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    object-fit: cover;
+}
+
+#nav-links{
+    display: flex;
+    justify-content: space-around;
+    gap: clamp(1rem,2vh,2rem);
+    margin-top: clamp(2rem, 2vw, 3rem);
+    padding: 0rem clamp(1rem, 2vw, 2rem);
+    transform: translateY(70%) scale(0.9);
+    transition: transform 500ms cubic-bezier(.13,.53,.38,.97); 
+}
+
+
+
+body[data-nav="true"] > .nav > #nav-links {
+    transform: translateY(0%) scale(1);
+}
+
+#maintitle{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+}
+
+main > h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 3rem;
+    font-weight: 500;
+}
+
+h3{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+h1 > .animate{
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(to right, #8ec3cd, #2259d0, #a428cd, #8ec3cd);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
